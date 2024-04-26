@@ -1,6 +1,5 @@
-import * as React from "react"
+import * as React from 'react'
 
-import '../../global-styles.css';
 import Layout from '../components/layout/Layout';
 
 const IndexPage = () => {
@@ -12,5 +11,3 @@ const IndexPage = () => {
 }
 
 export default IndexPage
-
-export const Head = () => <title>Home Page</title>

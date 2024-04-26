@@ -1,11 +1,15 @@
 import React from 'react';
+
 import BaseLayout from './BaseLayout';
 import Navigation from './Navigation';
+import Footer from "./Footer";
 
-const Layout = ({children}) => {
+const Layout = ({title, children}) => {
   return (
-    <BaseLayout>
+    <BaseLayout title={title}>
       <Navigation />
+      {children}
+      <Footer />
     </BaseLayout>
   )
 }
