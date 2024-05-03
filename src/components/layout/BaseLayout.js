@@ -3,7 +3,7 @@ import {createGlobalStyle} from 'styled-components';
 
 import {Helmet} from 'react-helmet';
 
-import FavIcon from '../../images/favicon.ico';
+import FavIcon from '../../images/brand/favicon.ico';
 
 const GlobalStyles = createGlobalStyle`
   body {

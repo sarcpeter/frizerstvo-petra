@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Link from '../content/Link';
 import Button from '../content/Button';
 
-import logo from '../../images/logo_horizontal.png';
+import logo from '../../images/brand/logo_horizontal.png';
 
 const NavContainer = styled.nav`
   color: var(--secondary-text-color);
