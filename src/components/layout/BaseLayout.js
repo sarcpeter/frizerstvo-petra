@@ -3,7 +3,7 @@ import {createGlobalStyle} from 'styled-components';
 
 import {Helmet} from 'react-helmet';
 
-import FavIcon from '../../images/icon.png';
+import FavIcon from '../../images/favicon.ico';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -19,6 +19,10 @@ const GlobalStyles = createGlobalStyle`
 
     --navigation-height: 4rem;
     --layout-section-padding: 0.5rem 2rem; 
+    
+    @media screen and (min-width: 750px) {
+      --layout-section-padding: 0.5rem 3rem;
+    }
     
     @media screen and (min-width: 600px) {
       --navigation-height: 6rem;

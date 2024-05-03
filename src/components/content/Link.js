@@ -4,16 +4,28 @@ import styled, {css} from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 
 const LinkStyle = css`
+  position: relative;
   padding: 0.5rem;
   margin: 0 0.5rem;
   
   color: inherit;
   font-family: 'Lato', sans-serif;
   text-decoration: none;
-  text-underline-offset: 0.25rem;
   
-  &:hover {
-    text-decoration: underline;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    right: 50%;
+    height: 1px;
+    background: var(--secondary-text-color);
+    transition: all 0.2s ease;
+  }
+  
+  &:hover::before {
+    left: 0.5rem;
+    right: 0.5rem;
   }
 `;
 

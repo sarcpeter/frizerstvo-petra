@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Link from '../content/Link';
 import Button from '../content/Button';
 
+import logo from '../../images/logo_horizontal.png';
+
 const NavContainer = styled.nav`
   color: var(--secondary-text-color);
   background: var(--primary-color);
@@ -48,11 +50,29 @@ const NavSection = styled.div`
   }
 `;
 
+const LogoLink = styled(Link)`
+  &::before {
+    display: none;
+    visibility: hidden;
+  }
+`;
+
+const LogoImage = styled.img`
+  max-width: 250px;
+  height: 70px;
+  overflow: hidden;
+`;
+
 const NavLink = styled(Link)`
-  &:hover,
-  &.active {
-    text-decoration: underline;
-    text-decoration-color: var(--secondary-color);
+  &::before {
+    bottom: 0.25rem;
+    height: 1px;
+    background: var(--secondary-color);
+  }
+  
+  &.active::before {
+    left: 0.25rem;
+    right: 0.25rem;
   }
 `;
 
@@ -131,6 +151,8 @@ const Navigation = (props) => {
   const subpage = locationUrl.pathname.slice(1, -1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  console.log(`%cSubpage%c: %c${subpage}%c`, 'color: cyan;', '', 'color: orange; font-style: italic;', '');
+
   const toggleMobileMenu = (event) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     document.body.style.overflow = (isMobileMenuOpen ? 'hidden' : 'visible');
@@ -140,9 +162,9 @@ const Navigation = (props) => {
     <NavContainer>
       <StyledNav>
         <NavSection data-mobile data-desktop>
-          <Link to='/'>
-            LOGO
-          </Link>
+          <LogoLink to='/'>
+            <LogoImage src={logo} alt='Frizerstvo Petra Logo' />
+          </LogoLink>
         </NavSection>
         <NavSection data-desktop>
           <NavLink to='/salon' className={(subpage === 'salon' ? 'active' : '')}>
@@ -187,3 +209,15 @@ const Navigation = (props) => {
 }
 
 export default Navigation;
+
+export const pageQuery = graphql`
+  query {
+    logoImage: file(relativePath: { eq: "images/logo.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 250) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
