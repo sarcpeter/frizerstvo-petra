@@ -98,6 +98,10 @@ const StyledSection = styled.section`
         }
       }
     }
+
+    &[layout~='reversed'] {
+      flex-direction: row-reverse;
+    }
   }
   
   @media screen and (min-width: 750px) {
