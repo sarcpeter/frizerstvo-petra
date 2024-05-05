@@ -33,7 +33,7 @@ const StyledLink = styled(GatsbyLink)(LinkStyle);
 const StyledAnchor = styled.a(LinkStyle);
 
 const Link = ({ id, className, to, onClick, href, target, rel, children, style }) => {
-  if (href) {
+  if (href || !to.startsWith('/')) {
     return (
       <StyledAnchor id={id} className={className} href={href} target={target} rel={rel} style={style}>
         {children}

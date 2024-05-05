@@ -3,7 +3,7 @@ import {createGlobalStyle} from 'styled-components';
 
 import {Helmet} from 'react-helmet';
 
-import FavIcon from '../../images/favicon.ico';
+import FavIcon from '../../images/brand/favicon.ico';
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -17,16 +17,22 @@ const GlobalStyles = createGlobalStyle`
     --secondary-text-color: #FFF;
     --box-shadow-light: 0 0 5px rgba(255, 255, 255, 0.5);
 
+    --content-width: 1050px;
     --navigation-height: 4rem;
-    --layout-section-padding: 0.5rem 2rem; 
+    --section-side-padding: 2rem;
+    --section-vertical-padding: 5rem;
+    --section-padding: var(--section-vertical-padding) var(--section-side-padding);
+    --layout-section-padding: 0.5rem var(--section-side-padding); 
     
     @media screen and (min-width: 750px) {
-      --layout-section-padding: 0.5rem 3rem;
+      --section-side-padding: 3rem;
+      --layout-section-padding: 0.5rem var(--section-side-padding);
     }
     
     @media screen and (min-width: 600px) {
       --navigation-height: 6rem;
-      --layout-section-padding: 1rem 4.5rem;
+      --section-side-padding: 4.5rem;
+      --layout-section-padding: 1rem var(--section-side-padding);
     }
   }
 `;
@@ -69,6 +75,10 @@ const BaseLayout = ({ children, title }) => {
         <link
           href='https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap'
           rel='stylesheet'
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap"
+          rel="stylesheet"
         />
 
         {/* Font Awesome */}

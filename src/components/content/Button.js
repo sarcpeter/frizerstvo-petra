@@ -13,6 +13,11 @@ const ButtonStyles = css`
   box-shadow: var(--box-shadow-light);
   transition: all 0.2s ease;
   
+  &::before {
+    display: none;
+    visibility: hidden;
+  }
+  
   &:hover {
     text-decoration: none;
     color: var(--secondary-text-color);

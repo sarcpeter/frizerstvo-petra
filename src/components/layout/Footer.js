@@ -6,7 +6,7 @@ import {faFacebook} from "@fortawesome/free-brands-svg-icons";
 
 import Link from '../content/Link';
 
-import logo from '../../images/logo_horizontal.png';
+import logo from '../../images/brand/logo_horizontal.png';
 
 const StyledFooter = styled.footer`
   padding: var(--layout-section-padding);
