@@ -43,28 +43,24 @@ const StyledGallery = styled.div`
 const ImageWrapper = styled.div`
   min-height: 128px;
   min-width: 128px;
+  
+  &[data-size~='16:9'] {
+    min-width: 384px;
+    min-height: 216px;
+  }
 `;
 
 const Image = styled(Img)`
-
+  width: 100%;
+  height: 100%;
 `;
-
-const buildGalleryImage = (imageData, index) => {
-  return (
-    <ImageWrapper key={`image_${index}`}>
-      <Image
-        fluid={imageData.image.childImageSharp.fluid}
-        alt={imageData.alt}
-      />
-    </ImageWrapper>
-  );
-}
 
 const Gallery = ({
   id,
   className,
   style,
   images,
+  imageSize,
   disableAutoscroll,
   disableInteractions
 }) => {
@@ -90,6 +86,17 @@ const Gallery = ({
 
   useEffect(updateWidths, []);
   visualViewport.addEventListener('resize', updateWidths);
+
+  const buildGalleryImage = (imageData, index) => {
+    return (
+      <ImageWrapper key={`image_${index}`} data-size={imageSize}>
+        <Image
+          fluid={imageData.image.childImageSharp.fluid}
+          alt={imageData.alt}
+        />
+      </ImageWrapper>
+    );
+  }
 
   return (
     <GalleryWrapper

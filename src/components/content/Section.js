@@ -261,6 +261,7 @@ const Section = ({
       >
         <Gallery
           images={gallery.images}
+          imageSize={gallery.imageSize}
           disableAutoscroll={gallery.disableAutoscroll}
           disableInteractions={gallery.disableInteractions}
         />
