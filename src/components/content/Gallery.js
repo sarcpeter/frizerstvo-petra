@@ -68,19 +68,18 @@ const Gallery = ({
   const [doAutoscroll, setDoAutoscroll] = useState(false);
 
   const updateWidths = () => {
-    const viewportWidth = ref.current.clientWidth;
-    const galleryWidth = ref.current.children[0].children[0].clientWidth;
-    const widthDiff = viewportWidth - galleryWidth;
-    console.log(`Viewport: ${viewportWidth} \nGallery:  ${galleryWidth}\n%cDiff:     ${widthDiff}%c`,
-      `${widthDiff < 0 ? 'color: cyan;' : 'color: gray;'}`, ''
-    );
+    if (ref.current) {
+      const viewportWidth = ref.current.clientWidth;
+      const galleryWidth = ref.current.children[0].children[0].clientWidth;
+      const widthDiff = viewportWidth - galleryWidth;
 
-    if (!disableAutoscroll) {
-      setDoAutoscroll(widthDiff < 0);
-    }
+      if (!disableAutoscroll) {
+        setDoAutoscroll(widthDiff < 0);
+      }
 
-    if (widthDiff >= 0) {
-      ref.current.children[0].style.width = `${galleryWidth}px`;
+      if (widthDiff >= 0) {
+        ref.current.children[0].style.width = `${galleryWidth}px`;
+      }
     }
   }
 
