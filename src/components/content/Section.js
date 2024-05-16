@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BackgroundImage from 'gatsby-image';
 import Img from 'gatsby-image';
 
 import Button from './Button';
 import Gallery from './Gallery';
-
+import BackgroundImage from './BackgroundImage';
 
 /*********************************************/
 /*              Base Components              */
@@ -24,7 +23,6 @@ const StyledSection = styled.section`
   
   &[data-background=true] {
     color: var(--secondary-text-color);
-    background: rgba(0, 0, 0, 0.6);
   }
 
   /*****     Layouts     *****/
@@ -119,15 +117,6 @@ const StyledSection = styled.section`
       }
     }
   }
-`;
-
-const StyledBackgroundImage = styled(BackgroundImage)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
 `;
 
 const ImageContainer = styled.div`
@@ -250,7 +239,6 @@ const Section = ({
   cards,
   gallery
 }) => {
-
   if (gallery) {
     return (
       <StyledSection
@@ -278,9 +266,9 @@ const Section = ({
       data-background={!!background}
     >
       {background &&
-        <StyledBackgroundImage
-          fluid={background.childImageSharp.fluid}
-          style={{position: 'absolute'}}
+        <BackgroundImage
+          image={background}
+          theme='dark'
         />
       }
 
