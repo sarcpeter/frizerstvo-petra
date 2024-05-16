@@ -7,6 +7,9 @@ import Section from '../components/content/Section';
 
 const IndexPage = () => {
   const data = useStaticQuery(pageQuery);
+  const backgroundImages = {
+    introImage: { image: data.introImage, alt: 'Background image alt' }
+  };
   const partnersImages = [
     {image: data.schwarzkopfImage, alt: 'Schwarzkopf logo'},
     {image: data.schwarzkopfImage, alt: 'Schwarzkopf logo'},
@@ -28,7 +31,7 @@ const IndexPage = () => {
           caption: 'Rezerviraj termin',
           to: '/rezervacija'
         }}
-        background={data.introImage}
+        background={backgroundImages.introImage}
         layout='full-width hero half-content'
       />
 
