@@ -10,6 +10,14 @@ const IndexPage = () => {
   const backgroundImages = {
     introImage: { image: data.introImage, alt: 'Background image alt' }
   };
+  const images = {
+    hairdressingImage: { image: data.hairdressingImage, alt: 'Image alt' },
+    scissorsImage: { image: data.scissorsImage, alt: 'Image alt' },
+    combImage: { image: data.combImage, alt: 'Image alt' },
+    dryerImage: { image: data.dryerImage, alt: 'Image alt' },
+    soapImage: { image: data.soapImage, alt: 'Image alt' },
+    nailPolishImage: { image: data.nailPolishImage, alt: 'Image alt' }
+  }
   const partnersImages = [
     {image: data.schwarzkopfImage, alt: 'Schwarzkopf logo'},
     {image: data.schwarzkopfImage, alt: 'Schwarzkopf logo'},
@@ -42,39 +50,44 @@ const IndexPage = () => {
           {
             title: 'Hairdressing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.hairdressingImage
+            image: images.hairdressingImage,
+            layout: 'center trio'
           },
           {
             title: 'Haircutting',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.scissorsImage
+            image: images.scissorsImage,
+            layout: 'center trio'
           },
           {
             title: 'Hair combing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.combImage
+            image: images.combImage,
+            layout: 'center trio'
           },
           {
             title: 'Hair drying',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.dryerImage
+            image: images.dryerImage,
+            layout: 'center trio'
           },
           {
             title: 'Hair soaping',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.soapImage
+            image: images.soapImage,
+            layout: 'center trio'
           },
           {
             title: 'Nail polishing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
-            image: data.nailPolishImage
+            image: images.nailPolishImage,
+            layout: 'center trio'
           },
         ]}
         cta={{
           caption: 'Rezerviraj termin',
           to: '/rezervacija'
         }}
-        layout='cards trio'
       />
 
       <Section

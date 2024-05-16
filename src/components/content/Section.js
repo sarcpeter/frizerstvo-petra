@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import Img from 'gatsby-image';
 
+import BackgroundImage from './BackgroundImage';
 import Button from './Button';
 import Gallery from './Gallery';
-import BackgroundImage from './BackgroundImage';
+import Card from './Card';
 
 /*********************************************/
 /*              Base Components              */
@@ -193,35 +194,6 @@ const CardsContainer = styled.div`
   margin-bottom: 4rem;
 `;
 
-const Card = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  width: 30%;
-  min-width: 250px;
-  
-  &:hover {
-    //TODO: Add hover effect for Card
-  }
-`;
-
-const CardImage = styled(Img)`
-  height: 128px;
-  width: 128px;
-  pointer-events: none;
-  transition: all 0.2s ease;
-`;
-
-const CardContent = styled.div`
-  p {
-    width: 200px;
-    margin: 0;
-    padding: 1rem;
-  }
-`;
-
 /*********************************************/
 /*                  Section                  */
 /*********************************************/
@@ -284,13 +256,14 @@ const Section = ({
         {cards &&
           <CardsContainer>
             {cards.map((card, index) => { return (
-              <Card key={`card_${index}`}>
-                <CardImage fluid={card.image.childImageSharp.fluid} />
-                <CardContent>
-                  <h2>{card.title}</h2>
-                  <p>{card.description}</p>
-                </CardContent>
-              </Card>
+              <Card
+                key={`card_${index}`}
+                title={card.title}
+                description={card.description}
+                image={card.image}
+                backgroundImage={card.backgroundImage}
+                layout={card.layout}
+              />
             );})}
           </CardsContainer>
         }
