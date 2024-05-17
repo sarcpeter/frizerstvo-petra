@@ -79,74 +79,32 @@ const StoritvePage = () => {
 
 const pageQuery = graphql`
   query {
-    backgroundImage: file(relativePath: {
-      eq: "storitve/giorgio-trovato-wSpkThmoZQc-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 900) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    backgroundImage: file(relativePath: { eq: "storitve/giorgio-trovato-wSpkThmoZQc-unsplash.jpg" }) {
+      ...BannerBackgroundImage
     }
     
-    hairdressingImage: file(relativePath: {
-      eq: "storitve/long-wavy-hair-variant.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    hairdressingImage: file(relativePath: { eq: "storitve/long-wavy-hair-variant.webp" }) {
+      ...IconImage
     }
 
-    scissorsImage: file(relativePath: {
-      eq: "storitve/scissors.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    scissorsImage: file(relativePath: { eq: "storitve/scissors.webp" }) {
+      ...IconImage
     }
 
-    combImage: file(relativePath: {
-      eq: "storitve/one-comb.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    combImage: file(relativePath: { eq: "storitve/one-comb.webp" }) {
+      ...IconImage
     }
 
-    dryerImage: file(relativePath: {
-      eq: "storitve/hair.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    dryerImage: file(relativePath: { eq: "storitve/hair.webp" }) {
+      ...IconImage
     }
 
-    soapImage: file(relativePath: {
-      eq: "storitve/soap.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    soapImage: file(relativePath: { eq: "storitve/soap.webp" }) {
+      ...IconImage
     }
 
-    nailPolishImage: file(relativePath: {
-      eq: "storitve/nail-polish.webp"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    nailPolishImage: file(relativePath: { eq: "storitve/nail-polish.webp" }) {
+      ...IconImage
     }
   }
 `

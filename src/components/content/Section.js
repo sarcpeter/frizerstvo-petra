@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Img from 'gatsby-image';
+import {GatsbyImage} from 'gatsby-plugin-image';
 
 import BackgroundImage from './BackgroundImage';
 import Button from './Button';
@@ -134,7 +134,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
 
 `;
 
@@ -246,7 +246,7 @@ const Section = ({
 
       {image &&
         <ImageContainer>
-          <Image fluid={image.image.childImageSharp.fluid} alt={image.alt} />
+          <Image image={image.image.childImageSharp.gatsbyImageData} alt={image.alt} />
         </ImageContainer>
       }
 
