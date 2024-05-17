@@ -53,54 +53,34 @@ const SalonPage = () => {
 
 const pageQuery = graphql`
   query {
-    salonImage: file(relativePath: {
-      eq: "salon/michael-dagonakis-SPuo9KOWCJs-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    salonImage: file(relativePath: { eq: "salon/michael-dagonakis-SPuo9KOWCJs-unsplash.jpg" }) {
+      ...BannerBackgroundImage
     }
 
-    hairWashImage: file(relativePath: {
-      eq: "salon/giorgio-trovato-ldC8xP2Z9lo-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 480) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    hairWashImage: file(relativePath: { eq: "salon/giorgio-trovato-ldC8xP2Z9lo-unsplash.jpg" }) {
+      ...GalleryImage
     }
 
-    hairCurlingImage: file(relativePath: {
-      eq: "salon/giorgio-trovato-wSpkThmoZQc-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 480) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    hairCurlingImage: file(relativePath: { eq: "salon/giorgio-trovato-wSpkThmoZQc-unsplash.jpg" }) {
+      ...GalleryImage
     }
 
-    seatsImage: file(relativePath: {
-      eq: "salon/greg-trowman-jsuWg7IXx1k-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 480) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    seatsImage: file(relativePath: { eq: "salon/greg-trowman-jsuWg7IXx1k-unsplash.jpg" }) {
+      ...GalleryImage
     }
 
-    washingImage: file(relativePath: {
-      eq: "salon/lindsay-cash-Md_DhaFsnCQ-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 480) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    washingImage: file(relativePath: { eq: "salon/lindsay-cash-Md_DhaFsnCQ-unsplash.jpg" }) {
+      ...GalleryImage
+    }
+  }
+  
+  fragment GalleryImage on File {
+    childImageSharp {
+      gatsbyImageData(
+        width: 480,
+        layout: CONSTRAINED,
+        placeholder: BLURRED
+      )
     }
   }
 `

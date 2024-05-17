@@ -119,94 +119,69 @@ const IndexPage = () => {
 
 const pageQuery = graphql`
   query {
-    introImage: file(relativePath: {
-      eq: "index/corina-rainer-qihqgBSYsMc-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    introImage: file(relativePath: { eq: "index/corina-rainer-qihqgBSYsMc-unsplash.jpg" }) {
+      ...BannerBackgroundImage
     }
 
-    hairdressingImage: file(relativePath: {
-      eq: "index/long-wavy-hair-variant.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    hairdressingImage: file(relativePath: { eq: "index/long-wavy-hair-variant.png" }) {
+      ...SectionImage
     }
 
-    scissorsImage: file(relativePath: {
-      eq: "index/scissors.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    scissorsImage: file(relativePath: { eq: "index/scissors.png" }) {
+      ...SectionImage
     }
 
-    combImage: file(relativePath: {
-      eq: "index/one-comb.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    combImage: file(relativePath: { eq: "index/one-comb.png" }) {
+      ...SectionImage
     }
 
-    dryerImage: file(relativePath: {
-      eq: "index/hair.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    dryerImage: file(relativePath: { eq: "index/hair.png" }) {
+      ...SectionImage
     }
 
-    soapImage: file(relativePath: {
-      eq: "index/soap.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    soapImage: file(relativePath: { eq: "index/soap.png" }) {
+      ...SectionImage
     }
 
-    nailPolishImage: file(relativePath: {
-      eq: "index/nail-polish.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    nailPolishImage: file(relativePath: { eq: "index/nail-polish.png" }) {
+      ...SectionImage
     }
 
-    schwarzkopfImage: file(relativePath: {
-      eq: "index/schwarzkopf.png"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 128) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    schwarzkopfImage: file(relativePath: { eq: "index/schwarzkopf.png" }) {
+      ...IconImage
     }
 
-    salonImage: file(relativePath: {
-      eq: "index/michael-dagonakis-SPuo9KOWCJs-unsplash.jpg"
-    }) {
-      childImageSharp {
-        fluid(maxWidth: 512) {
-          ...GatsbyImageSharpFluid
-        }
-      }
+    salonImage: file(relativePath: { eq: "index/michael-dagonakis-SPuo9KOWCJs-unsplash.jpg" }) {
+      ...SectionImage
+    }
+  }
+  
+  fragment BannerBackgroundImage on File {
+    childImageSharp {
+      gatsbyImageData(
+        layout: FULL_WIDTH,
+        placeholder: BLURRED
+      )
+    }
+  }
+  
+  fragment IconImage on File {
+    childImageSharp {
+      gatsbyImageData(
+        width: 128,
+        layout: CONSTRAINED,
+        placeholder: BLURRED
+      )
+    }
+  }
+  
+  fragment SectionImage on File {
+    childImageSharp {
+      gatsbyImageData(
+        width: 512,
+        layout: CONSTRAINED,
+        placeholder: BLURRED
+      )
     }
   }
 `;
