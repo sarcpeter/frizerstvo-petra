@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Img from 'gatsby-image';
+import {GatsbyImage} from 'gatsby-plugin-image';
 
 import BackgroundImage from './BackgroundImage';
 
@@ -63,7 +63,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
   height: 128px;
   width: 128px;
   margin: 0 auto;
@@ -107,7 +107,7 @@ const Card = ({
       <ContentWrapper layout={layout}>
         {image &&
           <Image
-            fluid={image.image.childImageSharp.fluid}
+            image={image.image.childImageSharp.gatsbyImageData}
             alt={image.alt}
           />
         }
