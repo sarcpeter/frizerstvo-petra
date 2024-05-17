@@ -9,12 +9,13 @@ const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   width: 45%;
-  min-width: min(450px, 80vw);
-
-
+  min-width: min(450px, 100%);
+  min-height: 280px;
+  
   &[layout~='dark'] {
     color: var(--secondary-text-color);
   }
@@ -30,10 +31,34 @@ const CardContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  &[layout~='center'] {
-    & > div:first-child {
-      left: 50%;
-      transform: translateX(-50%);
+  padding: 1rem;
+  
+  &[layout~='left-align'] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 50vh;
+    padding: 2rem 0;
+
+    & > div:first-child { // Image
+      height: 64px;
+      width: 64px;
+    }
+    
+    @media screen and (min-width: 480px) {
+      flex-direction: row;
+      min-height: auto;
+      
+      & > div:first-child { // Image
+        top: 50%;
+        height: 96px;
+        width: 96px;
+        transform: translateY(-50%);
+      }
+      
+      p {
+        max-width: 250px;
+      }
     }
   }
 `;
@@ -41,15 +66,14 @@ const ContentWrapper = styled.div`
 const Image = styled(Img)`
   height: 128px;
   width: 128px;
+  margin: 0 auto;
   pointer-events: none;
   transition: all 0.2s ease;
 `;
 
 const Content = styled.div`
   p {
-    width: 200px;
-    margin: 0;
-    padding: 1rem;
+    margin: 1rem;
   }
 `;
 
