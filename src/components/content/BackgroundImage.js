@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BackgroundImage from 'gatsby-image';
+import {GatsbyImage} from 'gatsby-plugin-image';
 
 const BackgroundContainer = styled.div`
   position: absolute;
@@ -15,6 +15,10 @@ const BackgroundContainer = styled.div`
   & > div:first-child {
     position: static !important;
   }
+`;
+
+const Image = styled(GatsbyImage)`
+  
 `;
 
 const ThemeOverlay = styled.div`
@@ -44,8 +48,8 @@ const CustomBackgroundImage = ({
       style={style}
       className={className}
     >
-      <BackgroundImage
-        fluid={image.image.childImageSharp.fluid}
+      <Image
+        image={image.image.childImageSharp.gatsbyImageData}
         alt={image.alt}
       />
       <ThemeOverlay

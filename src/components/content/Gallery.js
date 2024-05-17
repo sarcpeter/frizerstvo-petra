@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
-import Img from 'gatsby-image';
+import {GatsbyImage} from 'gatsby-plugin-image';
 
 const GalleryWrapper = styled.div`
   --gallery-gap: 3rem;
@@ -50,7 +50,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const Image = styled(Img)`
+const Image = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
 `;
@@ -90,7 +90,7 @@ const Gallery = ({
     return (
       <ImageWrapper key={`image_${index}`} data-size={imageSize}>
         <Image
-          fluid={imageData.image.childImageSharp.fluid}
+          image={imageData.image.childImageSharp.gatsbyImageData}
           alt={imageData.alt}
         />
       </ImageWrapper>
