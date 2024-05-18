@@ -209,7 +209,8 @@ const Section = ({
   background,
   layout,
   cards,
-  gallery
+  gallery,
+  children
 }) => {
   if (gallery) {
     return (
@@ -267,6 +268,9 @@ const Section = ({
             );})}
           </CardsContainer>
         }
+
+        {children}
+
         {cta &&
           <Button to={cta.to}>
             {cta.caption}
