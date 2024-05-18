@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
-import Link from '../content/Link';
-import Button from '../content/Button';
+import Link from '../action/Link';
+import Button from '../action/Button';
 
 import logo from '../../images/brand/logo_horizontal.png';
 
