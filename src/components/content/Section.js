@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {GatsbyImage} from 'gatsby-plugin-image';
 
 import BackgroundImage from './BackgroundImage';
-import Button from './Button';
+import Button from '../action/Button';
 import Gallery from './Gallery';
 import Card from './Card';
 
