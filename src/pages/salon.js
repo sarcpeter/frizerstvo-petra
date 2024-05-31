@@ -29,7 +29,8 @@ const SalonPage = () => {
 
       <Section
         id='gallery'
-        layout='full-width dark gallery'
+        layout='full-width gallery'
+        theme='dark'
         gallery={{
           images: galleryImages,
           imageSize: '16:9',

@@ -9,6 +9,8 @@ import Link from '../action/Link';
 import logo from '../../images/brand/logo_horizontal.png';
 
 const StyledFooter = styled.footer`
+  box-sizing: border-box;
+  height: var(--footer-height);
   padding: var(--layout-section-padding);
   color: var(--secondary-text-color);
   background: var(--primary-color);
