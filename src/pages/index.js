@@ -92,7 +92,8 @@ const IndexPage = () => {
 
       <Section
         id='partners'
-        layout='full-width dark gallery no-padding'
+        layout='full-width gallery no-padding'
+        theme='dark'
         gallery={{
           images: partnersImages,
           disableInteractions: true

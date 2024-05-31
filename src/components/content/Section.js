@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import {GatsbyImage} from 'gatsby-plugin-image';
 
@@ -16,67 +16,77 @@ const StyledSection = styled.section`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   
-  max-width: var(--content-width);
+  max-width: var(--max-content-width);
   margin: 0 auto;
   padding: var(--section-padding);
   color: var(--text-color);
   
-  &[data-background=true] {
+  ${props => props.$background && css` & {
     color: var(--secondary-text-color);
-  }
+  }`}
 
   /*****     Layouts     *****/
   
-  &[layout~='full-width'] {
+  ${props => props.$layout?.includes('full-width') && css` & {
     max-width: none;
-  }
+  }`}
 
-  &[layout~='half-content'] {
+  ${props => props.$layout?.includes('full-height') && css` & {
+    box-sizing: border-box;
+    min-height: calc(100vh - var(--footer-height) - var(--navigation-height));
+  }`}
+
+  ${props => props.$layout?.includes('half-content') && css` & {
     main > *:not(div, a, button) {
       width: 100%;
     }
-  }
-  
-  &[layout~='hero'] main {
+
+    @media screen and (min-width: 750px) {
+      main {
+        align-items: flex-start;
+
+        & > h1 {
+          width: 75%;
+          text-align: left;
+        }
+
+        & > p {
+          width: 50%;
+          text-align: left;
+        }
+      }
+    }
+  }`}
+
+  ${props => props.$layout?.includes('hero') && css` & {
     h1 {
       color: var(--secondary-color);
     }
-  }
-  
-  &[layout~='side-by-side'] {
+  }`}
+
+  ${props => props.$layout?.includes('side-by-side') && css` & {
     flex-direction: column;
-    
+
     &:has(div > div > img) {
       div:has(> div > img) {
         transform: translateY(6.5rem);
       }
-      
+
       main {
         h1 {
           transform: translateY(calc(-250px));
         }
-        
+
         p {
           width: 70%;
           min-width: 250px;
         }
       }
     }
-  }
-  
-  &[layout~='no-padding'] {
-    padding: 0;
-  }
 
-  /*****     Themes     *****/
-  
-  &[layout~='dark'] {
-    background: var(--primary-color);
-  }
-  
-  @media screen and (min-width: 860px) {
-    &[layout~='side-by-side'] {
+    @media screen and (min-width: 860px) {
       flex-direction: row;
       gap: 5rem;
 
@@ -97,27 +107,21 @@ const StyledSection = styled.section`
         }
       }
     }
+  }`}
 
-    &[layout~='reversed'] {
-      flex-direction: row-reverse;
-    }
-  }
+  ${props => props.$layout?.includes('no-padding') && css` & {
+    padding: 0;
+  }`}
+
+  ${props => props.$layout?.includes('reversed') && css` & {
+    flex-direction: row-reverse;
+  }`}
+
+  /*****     Themes     *****/
   
-  @media screen and (min-width: 750px) {
-    &[layout~='half-content'] main {
-      align-items: flex-start;
-      
-      & > h1 {
-        width: 75%;
-        text-align: left;
-      }
-      
-      & > p {
-        width: 50%;
-        text-align: left;
-      }
-    }
-  }
+  ${props => props.$theme?.includes('dark') && css` & {
+    background: var(--primary-color);
+  }`}
 `;
 
 const ImageContainer = styled.div`
@@ -208,6 +212,7 @@ const Section = ({
   image,
   background,
   layout,
+  theme,
   cards,
   gallery,
   children
@@ -217,8 +222,9 @@ const Section = ({
       <StyledSection
         id={id}
         className={className}
-        layout={layout}
         style={style}
+        $theme={theme}
+        $layout={layout}
       >
         <Gallery
           images={gallery.images}
@@ -234,9 +240,10 @@ const Section = ({
     <StyledSection
       id={id}
       className={className}
-      layout={layout}
       style={style}
-      data-background={!!background}
+      $theme={theme}
+      $layout={layout}
+      $background={!!background}
     >
       {background &&
         <BackgroundImage
