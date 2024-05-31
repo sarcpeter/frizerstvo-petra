@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import {graphql} from 'gatsby';
 
 import Link from '../action/Link';
 import Button from '../action/Button';
@@ -7,6 +8,8 @@ import Button from '../action/Button';
 import logo from '../../images/brand/logo_horizontal.png';
 
 const NavContainer = styled.nav`
+  --box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+  
   color: var(--secondary-text-color);
   background: var(--primary-color);
 `;
@@ -37,7 +40,7 @@ const NavSection = styled.div`
     visibility: hidden;
   }
   
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
     &:not([data-desktop]) {
       display: none;
       visibility: hidden;
@@ -133,7 +136,7 @@ const MobileMenu = styled.div`
     max-height: 0;
   }
   
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 800px) {
     display: none;
     visibility: hidden;
   }
@@ -150,8 +153,6 @@ const Navigation = (props) => {
   const locationUrl = new URL((window ? window.location.href : ''));
   const subpage = locationUrl.pathname.slice(1, -1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  console.log(`%cSubpage%c: %c${subpage}%c`, 'color: cyan;', '', 'color: orange; font-style: italic;', '');
 
   const toggleMobileMenu = (event) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -211,6 +212,7 @@ const Navigation = (props) => {
 export default Navigation;
 
 export const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     logoImage: file(relativePath: { eq: "images/logo.png" }) {
       childImageSharp {
