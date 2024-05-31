@@ -10,25 +10,30 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding-top: var(--navigation-height);
     font-family: 'Lato', sans-serif;
-    
+
     --primary-color: #1D1E1C;
     --secondary-color: #E4C472;
     --text-color: #000;
     --secondary-text-color: #FFF;
-    --box-shadow-light: 0 0 5px rgba(255, 255, 255, 0.5);
+    --field-color: #FFF;
+    --field-hover-color: #DADADA;
+    --error-color: rgba(255, 0, 0, 0.8);
+    --box-shadow: 0 0 5px rgba(22, 22, 22, 0.2);
 
-    --content-width: 1050px;
+    --content-width: 750px;
+    --max-content-width: 1050px;
     --navigation-height: 4rem;
+    --footer-height: 10rem;
     --section-side-padding: 2rem;
     --section-vertical-padding: 5rem;
     --section-padding: var(--section-vertical-padding) var(--section-side-padding);
-    --layout-section-padding: 0.5rem var(--section-side-padding); 
-    
+    --layout-section-padding: 0.5rem var(--section-side-padding);
+
     @media screen and (min-width: 750px) {
       --section-side-padding: 3rem;
       --layout-section-padding: 0.5rem var(--section-side-padding);
     }
-    
+
     @media screen and (min-width: 600px) {
       --navigation-height: 6rem;
       --section-side-padding: 4.5rem;
