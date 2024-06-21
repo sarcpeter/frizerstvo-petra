@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {FieldData} from '../utils/FormBuilder';
-
 import Layout from '../components/layout/Layout';
 import Section from '../components/content/Section';
 import Form from '../components/action/Form';
+import Input from '../components/action/Input';
 
 const StyledSection = styled(Section)`
   max-width: var(--content-width);
@@ -26,7 +25,7 @@ const StyledForm = styled(Form)`
     
     @media screen and (min-width: 700px) {
       &:has(#first-name, #last-name) {
-        width: 50%;
+        width: calc(50% - 1rem);
       }
     }
   }
@@ -45,14 +44,13 @@ const KontaktPage = () => {
           onSubmit={(values) => {
             console.log(JSON.stringify(values, null, 2));
           }}
-          fields={[
-            new FieldData('first-name', 'text', 'Ime', true),
-            new FieldData('last-name', 'text', 'Priimek', true),
-            new FieldData('email', 'email', 'Elektronski naslov', true),
-            new FieldData('message', 'textarea', 'Sporočilo', true),
-            new FieldData('submit', 'submit', 'Pošlji'),
-          ]}
-        />
+        >
+          <Input id='first-name' type='text' label='Ime' required />
+          <Input id='last-name' type='text' label='Priimek' required />
+          <Input id='email' type='email' label='Elektronski naslov' required />
+          <Input id='message' type='textarea' label='Sporočilo' required />
+          <Input id='submit' type='submit' label='Pošlji' />
+        </StyledForm>
       </StyledSection>
     </Layout>
   )
