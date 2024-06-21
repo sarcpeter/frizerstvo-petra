@@ -40,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
       --layout-section-padding: 1rem var(--section-side-padding);
     }
   }
+  
+  main {
+    width: 100%;
+  }
 `;
 
 /*
