@@ -22,7 +22,7 @@ const Content = styled.div`
   align-items: center;
   gap: 2rem;
   
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 850px) {
     flex-direction: row;
     justify-content: space-between;
     
@@ -116,7 +116,7 @@ const SocialMedia = styled.div`
     }
   }
 
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 850px) {
     order: 3;
     align-items: flex-end;
     

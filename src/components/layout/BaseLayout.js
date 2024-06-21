@@ -24,12 +24,16 @@ const GlobalStyles = createGlobalStyle`
     --content-width: 750px;
     --max-content-width: 1050px;
     --navigation-height: 4rem;
-    --footer-height: 10rem;
+    --footer-height: 20rem;
     --section-side-padding: 2rem;
     --section-vertical-padding: 5rem;
     --section-padding: var(--section-vertical-padding) var(--section-side-padding);
     --layout-section-padding: 0.5rem var(--section-side-padding);
 
+    @media screen and (min-width: 850px) {
+      --footer-height: 10rem;
+    }
+    
     @media screen and (min-width: 750px) {
       --section-side-padding: 3rem;
       --layout-section-padding: 0.5rem var(--section-side-padding);
