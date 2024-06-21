@@ -19,6 +19,7 @@ const GlobalStyles = createGlobalStyle`
     --field-hover-color: #DADADA;
     --error-color: rgba(255, 0, 0, 0.8);
     --box-shadow: 0 0 5px rgba(22, 22, 22, 0.2);
+    --setion-box-shadow: 3px 3px 15px rgba(0,0,0,0.4);
 
     --content-width: 750px;
     --max-content-width: 1050px;

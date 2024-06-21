@@ -32,22 +32,35 @@ const ButtonStyles = css`
     font-size: 1rem;
     padding: 0.7rem 3rem;
   }`}
+
+  ${props => props.$layout?.includes('center') && css` & {
+    margin: 0 auto;
+  }`}
 `;
 
 const ButtonLink = styled(Link)`${ButtonStyles}`;
 const StyledButton = styled.button`${ButtonStyles}`;
 
-const Button = ({ id, className, children, to, onClick, type, layout }) => {
+const Button = ({
+  id,
+  style,
+  className,
+  children,
+  to,
+  type,
+  onClick,
+  layout
+}) => {
   if (to) {
     return (
-      <ButtonLink id={id} className={className} to={to} $layout={layout}>
+      <ButtonLink id={id} style={style} className={className} to={to} $layout={layout}>
         {children}
       </ButtonLink>
     );
   }
 
   return (
-    <StyledButton id={id} className={className} onClick={onClick} type={type} $layout={layout}>
+    <StyledButton id={id} style={style} className={className} onClick={onClick} type={type} $layout={layout}>
       {children}
     </StyledButton>
   );
