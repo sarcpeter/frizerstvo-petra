@@ -28,6 +28,10 @@ const StyledSection = styled.section`
   }`}
 
   /*****     Layouts     *****/
+
+  ${props => props.$layout?.includes('constrained') && css` & {
+    max-width: var(--content-width);
+  }`}
   
   ${props => props.$layout?.includes('full-width') && css` & {
     max-width: none;
@@ -158,7 +162,6 @@ const StyledMain = styled.main`
   a,
   button {
     display: block;
-    margin: 0;
     color: var(--secondary-text-color);
     background: var(--secondary-color);
   }

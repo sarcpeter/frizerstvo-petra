@@ -31,6 +31,10 @@ const ThemeOverlay = styled.div`
   &[layout~='dark'] {
     background: rgba(22, 22, 22, 0.6);
   }
+
+  &[layout~='darker'] {
+    background: rgba(22, 22, 22, 0.7);
+  }
 `;
 
 const CustomBackgroundImage = ({
