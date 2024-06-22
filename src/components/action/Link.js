@@ -7,10 +7,11 @@ const LinkStyle = css`
   position: relative;
   padding: 0.5rem;
   margin: 0 0.5rem;
-  
-  color: inherit;
+
+  font-size: 1rem;
   font-family: 'Lato', sans-serif;
   text-decoration: none;
+  color: inherit;
   
   &::before {
     content: '';
@@ -27,23 +28,30 @@ const LinkStyle = css`
     left: 0.5rem;
     right: 0.5rem;
   }
+
+  @media screen and (min-width: 576px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const StyledLink = styled(GatsbyLink)(LinkStyle);
 const StyledAnchor = styled.a(LinkStyle);
 
-const Link = ({ id, className, to, onClick, href, target, rel, children, style }) => {
-  if (href || !to.startsWith('/')) {
+const Link = ({ id, className, to, onClick, target, rel, children, style }) => {
+  if (to.startsWith('/')) {
+    // Internal link --> use GatsbyLink
     return (
-      <StyledAnchor id={id} className={className} href={href} target={target} rel={rel} style={style}>
+      <StyledLink id={id} className={className} to={to} style={style} onClick={onClick}>
         {children}
-      </StyledAnchor>
+      </StyledLink>
     )
   }
+
+  // External link --> use anchor
   return (
-    <StyledLink id={id} className={className} to={to} style={style} onClick={onClick}>
+    <StyledAnchor id={id} className={className} href={to} target={target} rel={rel} style={style}>
       {children}
-    </StyledLink>
+    </StyledAnchor>
   );
 }
 

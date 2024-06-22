@@ -145,7 +145,7 @@ const Footer = () => {
         </LogoContainer>
         <SocialMedia>
           <h4>Sledi nam</h4>
-          <Link href='https://www.facebook.com/p/FRIZERSTVO-PETRA-100063542471781/' target='_blank' rel='noreferrer'>
+          <Link to='https://www.facebook.com/p/FRIZERSTVO-PETRA-100063542471781/' target='_blank' rel='noreferrer'>
             Frizerstvo Petra
             <FontAwesomeIcon icon={faFacebook} />
           </Link>
