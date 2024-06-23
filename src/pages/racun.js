@@ -39,9 +39,8 @@ const UserContainer = styled.div`
   
   height: fit-content;
   padding: 1rem;
-  //border: 2px solid var(--primary-color);
   border-radius: 1.25rem;
-  box-shadow: var(--setion-box-shadow);
+  box-shadow: var(--container-box-shadow);
 `;
 
 const UserIcon = styled(FontAwesomeIcon)`
@@ -111,9 +110,8 @@ const StyledDisplay = styled.div`
 
 const ActionWrapper = styled.div`
   padding: 1rem;
-  //border: 2px solid var(--primary-color);
-  border-radius: 1.25rem;
-  box-shadow: var(--setion-box-shadow);
+  border-radius: var(--container-border-radius);
+  box-shadow: var(--container-box-shadow);
   
   h2 {
     margin-left: auto;
@@ -225,7 +223,7 @@ const ReservationsWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   margin-top: 3rem;
-  border-radius: 1.25rem;
+  border-radius: var(--container-border-radius);
   
   @media screen and (min-width: 750px) {
     margin-top: 0;
@@ -237,9 +235,9 @@ const NoData = styled.span`
   width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
-  border-radius: 1.25rem;
+  border-radius: var(--container-border-radius);
   text-align: center;
-  box-shadow: var(--setion-box-shadow);
+  box-shadow: var(--container-box-shadow);
 `;
 
 const Reservations = styled.div`
@@ -256,9 +254,8 @@ const Reservation = styled.div`
 
   margin: 1rem auto;
   padding: 1.5rem 0.25rem;
-  //border: 2px solid var(--primary-color);
-  border-radius: 1rem;
-  box-shadow: var(--setion-box-shadow);
+  border-radius: var(--container-border-radius);
+  box-shadow: var(--container-box-shadow);
   
   & > div {
     box-sizing: border-box;
@@ -493,6 +490,7 @@ const RacunPage = () => {
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     hairDressingImage: file(relativePath: { eq: "storitve/john-arano-CCTCHXEsan8-unsplash.jpg" }) {
       ...ServiceBackgroundImage

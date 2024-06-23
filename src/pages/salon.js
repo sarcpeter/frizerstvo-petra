@@ -53,6 +53,7 @@ const SalonPage = () => {
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     salonImage: file(relativePath: { eq: "salon/michael-dagonakis-SPuo9KOWCJs-unsplash.jpg" }) {
       ...BannerBackgroundImage

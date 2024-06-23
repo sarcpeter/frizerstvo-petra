@@ -40,12 +40,15 @@ const IndexPage = () => {
           to: '/rezervacija'
         }}
         background={backgroundImages.introImage}
-        layout='full-width hero half-content'
+        layout='banner half-content'
+        theme='large serif'
       />
 
       <Section
         id='nase-storitve'
         title='Naše Storitve'
+        layout='constrained'
+        theme='big'
         cards={[
           {
             title: 'Hairdressing',
@@ -112,13 +115,14 @@ const IndexPage = () => {
           caption: 'Več o salonu',
           to: '/salon'
         }}
-        layout='side-by-side'
+        layout='constrained'
       />
     </Layout>
   );
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     introImage: file(relativePath: { eq: "index/corina-rainer-qihqgBSYsMc-unsplash.jpg" }) {
       ...BannerBackgroundImage

@@ -78,6 +78,7 @@ const StoritvePage = () => {
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     backgroundImage: file(relativePath: { eq: "storitve/giorgio-trovato-wSpkThmoZQc-unsplash.jpg" }) {
       ...BannerBackgroundImage

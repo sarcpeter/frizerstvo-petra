@@ -15,18 +15,25 @@ const CardContainer = styled.div`
   width: 45%;
   min-width: min(450px, 100%);
   min-height: 280px;
-  
-  &[layout~='dark'] {
-    color: var(--secondary-text-color);
-  }
+  border-radius: var(--container-border-radius);
+  box-shadow: var(--container-box-shadow);
+  transition: all 0.2s ease;
 
   &:has([layout~='trio']) {
-    width: 30%;
+    width: 25%;
     min-width: 250px;
   }
 
   &:hover {
-    //TODO: Add hover effect for Card
+    transform: scale(1.05);
+
+    [data-gatsby-image-wrapper] {
+      transform: scaleX(1.3) scaleY(0);
+    }
+    
+    h2, h3, p {
+      transform: scale(1);
+    }
   }
 `;
 
@@ -63,15 +70,30 @@ const ContentWrapper = styled.div`
   }
 `;
 
+const ImageWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  [data-gatsby-image-wrapper] {
+    transition: all 0.2s ease;
+  }
+`;
+
 const Image = styled(GatsbyImage)`
   height: 128px;
   width: 128px;
   margin: 0 auto;
   pointer-events: none;
-  transition: all 0.2s ease;
 `;
 
 const Content = styled.div`
+  h2, h3, p {
+    transform: scaleY(0) scaleX(1.3);
+    transition: all 0.2s ease;
+  }
+  
   p {
     margin: 1rem;
   }
@@ -106,10 +128,9 @@ const Card = ({
 
       <ContentWrapper layout={layout}>
         {image &&
-          <Image
-            image={image.image.childImageSharp.gatsbyImageData}
-            alt={image.alt}
-          />
+          <ImageWrapper>
+            <Image image={image.image.childImageSharp.gatsbyImageData} alt={image.alt} />
+          </ImageWrapper>
         }
 
         <Content>
