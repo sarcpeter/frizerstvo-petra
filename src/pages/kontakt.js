@@ -15,6 +15,9 @@ const StyledForm = styled(Form)`
   flex-wrap: wrap;
   justify-content: space-between;
   max-width: var(--content-width);
+  padding: 2rem;
+  border-radius: var(--container-border-radius);
+  box-shadow: var(--container-box-shadow);
   
   button#submit {
     margin: 0 auto;
@@ -36,7 +39,7 @@ const KontaktPage = () => {
     <Layout title='Kontakt'>
       <StyledSection
         id='kontakt'
-        title='Kontakt'
+        title='Kontaktiraj nas'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
         layout='full-height'
       >
