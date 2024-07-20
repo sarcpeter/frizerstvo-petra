@@ -24,48 +24,45 @@ const StoritvePage = () => {
       <Section
         id='storitve'
         title='Storitve'
+        layout='constrained'
+        theme='big'
+        cardsLayout='duo'
         cards={[
           {
             title: 'Hairdressing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.hairdressingImage,
-            layout: 'left-align'
           },
           {
             title: 'Haircutting',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.scissorsImage,
-            layout: 'left-align'
           },
           {
             title: 'Hair combing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.combImage,
-            layout: 'left-align'
           },
           {
             title: 'Hair drying',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.dryerImage,
-            layout: 'left-align'
           },
           {
             title: 'Hair soaping',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.soapImage,
-            layout: 'left-align'
           },
           {
             title: 'Nail polishing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             backgroundImage: backgroundImages.backgroundImage,
             image: images.nailPolishImage,
-            layout: 'left-align'
           },
         ]}
         cta={{
@@ -78,6 +75,7 @@ const StoritvePage = () => {
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     backgroundImage: file(relativePath: { eq: "storitve/giorgio-trovato-wSpkThmoZQc-unsplash.jpg" }) {
       ...BannerBackgroundImage

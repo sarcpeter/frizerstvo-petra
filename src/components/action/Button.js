@@ -9,11 +9,13 @@ const ButtonStyles = css`
   padding: 0.5rem 1.5rem;
   border: none;
   border-radius: 0.5rem;
+
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
   text-decoration: none;
   color: var(--text-color);
   background: var(--secondary-text-color);
   box-shadow: var(--box-shadow);
-  font-family: 'Lato', sans-serif;
   cursor: pointer;
   transition: all 0.2s ease;
   
@@ -26,6 +28,10 @@ const ButtonStyles = css`
     text-decoration: none;
     color: var(--secondary-text-color);
     background: var(--secondary-color);
+  }
+
+  @media screen and (min-width: 576px) {
+    font-size: 1.1rem;
   }
   
   ${props => props.$layout?.includes('big') && css` & {

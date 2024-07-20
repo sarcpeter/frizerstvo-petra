@@ -40,48 +40,46 @@ const IndexPage = () => {
           to: '/rezervacija'
         }}
         background={backgroundImages.introImage}
-        layout='full-width hero half-content'
+        layout='banner half-content'
+        theme='large serif'
       />
 
       <Section
         id='nase-storitve'
         title='Naše Storitve'
+        layout='constrained'
+        theme='big'
+        cardsLayout='trio'
         cards={[
           {
             title: 'Hairdressing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.hairdressingImage,
-            layout: 'center trio'
           },
           {
             title: 'Haircutting',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.scissorsImage,
-            layout: 'center trio'
           },
           {
             title: 'Hair combing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.combImage,
-            layout: 'center trio'
           },
           {
             title: 'Hair drying',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.dryerImage,
-            layout: 'center trio'
           },
           {
             title: 'Hair soaping',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.soapImage,
-            layout: 'center trio'
           },
           {
             title: 'Nail polishing',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
             image: images.nailPolishImage,
-            layout: 'center trio'
           },
         ]}
         cta={{
@@ -112,13 +110,14 @@ const IndexPage = () => {
           caption: 'Več o salonu',
           to: '/salon'
         }}
-        layout='side-by-side'
+        layout='constrained'
       />
     </Layout>
   );
 }
 
 const pageQuery = graphql`
+  # noinspection GraphQLUnresolvedReference
   query {
     introImage: file(relativePath: { eq: "index/corina-rainer-qihqgBSYsMc-unsplash.jpg" }) {
       ...BannerBackgroundImage

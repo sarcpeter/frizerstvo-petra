@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 
-import {GatsbyImage} from 'gatsby-plugin-image';
+import {GatsbyImage as Image} from 'gatsby-plugin-image';
 
 import BackgroundImage from './BackgroundImage';
 import Button from '../action/Button';
@@ -18,10 +18,13 @@ const StyledSection = styled.section`
   align-items: center;
   justify-content: center;
   
-  max-width: var(--max-content-width);
   margin: 0 auto;
   padding: var(--section-padding);
   color: var(--text-color);
+  
+  main {
+    max-width: var(--max-content-width);
+  }
   
   ${props => props.$background && css` & {
     color: var(--secondary-text-color);
@@ -29,12 +32,20 @@ const StyledSection = styled.section`
 
   /*****     Layouts     *****/
 
-  ${props => props.$layout?.includes('constrained') && css` & {
-    max-width: var(--content-width);
-  }`}
+  ${props => props.$layout?.includes('banner') && css`
+    box-sizing: border-box;
+    height: calc(80vh - var(--navigation-height));
+    min-height: fit-content;
+         
+    h1 {
+      color: var(--secondary-color);
+    }
+  `}
   
-  ${props => props.$layout?.includes('full-width') && css` & {
-    max-width: none;
+  ${props => props.$layout?.includes('constrained') && css` & {
+    main {
+      max-width: var(--content-width);
+    }
   }`}
 
   ${props => props.$layout?.includes('full-height') && css` & {
@@ -43,72 +54,61 @@ const StyledSection = styled.section`
   }`}
 
   ${props => props.$layout?.includes('half-content') && css` & {
-    main > *:not(div, a, button) {
-      width: 100%;
-    }
-
-    @media screen and (min-width: 750px) {
+    @media screen and (min-width: 769px) {
       main {
         align-items: flex-start;
-
-        & > h1 {
-          width: 75%;
-          text-align: left;
-        }
-
-        & > p {
-          width: 50%;
-          text-align: left;
-        }
-      }
-    }
-  }`}
-
-  ${props => props.$layout?.includes('hero') && css` & {
-    h1 {
-      color: var(--secondary-color);
-    }
-  }`}
-
-  ${props => props.$layout?.includes('side-by-side') && css` & {
-    flex-direction: column;
-
-    &:has(div > div > img) {
-      div:has(> div > img) {
-        transform: translateY(6.5rem);
-      }
-
-      main {
+        width: 50%;
+        margin-left: 0;
+        margin-right: auto;
+        
         h1 {
-          transform: translateY(calc(-250px));
+          width: 150%;
+          text-align: left;
         }
-
+        
         p {
-          width: 70%;
-          min-width: 250px;
+          text-align: left;
+        }
+        
+        button, a {
+          margin-top: 1.5rem;
+          margin-left: 0;
         }
       }
     }
+  }`}
 
-    @media screen and (min-width: 860px) {
-      flex-direction: row;
-      gap: 5rem;
-
-      &:has(div > div > img) {
-        div:has(> div > img) {
-          transform: none;
+  ${props => props.$layout?.includes('image') && css` & {
+    main {
+      flex-direction: column;
+      
+      h1 {
+        margin: 0 auto;
+      }
+      
+      p {
+        margin: 0 auto 2rem;
+        max-width: 400px;
+      }
+      
+      @media screen and (min-width: 769px) {
+        display: grid;
+        grid-template-areas: 
+          'image title'
+          'image description'
+        ;
+        
+        p {
+          margin-bottom: 0;
         }
-
-        main {
-          h1 {
-            transform: none;
-          }
-
-          p {
-            width: auto;
-            min-width: auto;
-          }
-        }
+        
+        ${props => props.$hasCta && css`
+          grid-template-areas: 
+            'image title'
+            'image description'
+            'image cta'
+          ;
+        `}
       }
     }
   }`}
@@ -126,24 +126,46 @@ const StyledSection = styled.section`
   ${props => props.$theme?.includes('dark') && css` & {
     background: var(--primary-color);
   }`}
-`;
 
-const ImageContainer = styled.div`
-  --image-size: 250px;
-  
-  flex-shrink: 0;
-  width: var(--image-size);
-  height: var(--image-size);
-  border-radius: 50%;
-  overflow: hidden;
-  
-  @media screen and (min-width: 1000px) {
-    --image-size: 315px;
-  }
-`;
+  ${props => props.$theme?.includes('big') && css` & {
+    h1 {
+      font-size: 2.25rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      
+      @media screen and (min-width: 576px) and (max-width: 768px) {
+        font-size: 3rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+      }
+      
+      @media screen and (min-width: 769px) {
+        font-size: 3.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 3rem;
+      }
+    }
+  }`}
 
-const Image = styled(GatsbyImage)`
+  ${props => props.$theme?.includes('large') && css` & {
+    h1 {
+      font-size: 2.75rem;
+      
+      @media screen and (min-width: 576px) and (max-width: 768px) {
+        font-size: 3.95rem;
+      }
+      
+      @media screen and (min-width: 769px) {
+        font-size: 5rem;
+      }
+    }
+  }`}
 
+  ${props => props.$theme?.includes('serif') && css` & {
+    h1 {
+      font-family: 'Corinthia', serif;
+    }
+  }`}
 `;
 
 /********************************************/
@@ -165,40 +187,89 @@ const StyledMain = styled.main`
     color: var(--secondary-text-color);
     background: var(--secondary-color);
   }
-
-  &:has(p) > h1 {
-    margin-bottom: 2rem;
-  }
-
-  &:has(a) > p,
-  &:has(button) > p {
-    margin-bottom: 4rem;
-  }
 `;
 
 const StyledTitle = styled.h1`
-  margin-top: 0;
-  margin-bottom: 0;
-  font-family: 'Corinthia', serif;
-  font-size: 5rem;
+  grid-area: title;
+  margin: 0 auto;
+  font-size: 1.75rem;
+  font-family: 'Lato', sans-serif;
   color: var(--text-color);
+
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    font-size: 2.15rem;
+  }
+
+  @media screen and (min-width: 769px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const StyledDescription = styled.p`
-
+  grid-area: description;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  
+  @media screen and (min-width: 576px) {
+    font-size: 1.1rem;
+  }
 `;
 
+const StyledButton = styled(Button)`
+  grid-area: cta;
+  margin: auto;
+`;
+
+const EmptyButton = styled.span`
+  grid-area: cta;
+  height: 0;
+`
+
 /********************************************/
-/*             Cards Components             */
+/*            Content Components            */
 /********************************************/
+
+const ImageContainer = styled.div`
+  --image-size: 250px;
+
+  grid-area: image;
+  width: var(--image-size);
+  height: var(--image-size);
+  margin: 2rem auto;
+  border-radius: 50%;
+  overflow: hidden;
+  
+  @media screen and (min-width: 769px) {
+    margin: 0 auto;
+  }
+  
+  @media screen and (min-width: 1025px) {
+    --image-size: 315px;
+  }
+`;
 
 const CardsContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  column-gap: 3rem;
-  row-gap: 5rem;
+  column-gap: 2rem;
+  row-gap: 2rem;
   margin-bottom: 4rem;
+  
+  ${props => props.$layout?.includes('trio') && css`
+    & > div { // CardContainer
+      width: 25%;
+      min-width: 250px;
+    }
+  `}
+  
+  ${props => props.$layout?.includes('duo') && css`
+    & > div { // CardContainer
+      width: calc(50% - 1rem);
+      min-width: 250px;
+    }
+  `}
 `;
 
 /*********************************************/
@@ -217,6 +288,7 @@ const Section = ({
   layout,
   theme,
   cards,
+  cardsLayout,
   gallery,
   children
 }) => {
@@ -239,6 +311,33 @@ const Section = ({
     )
   }
 
+  if (image) {
+    return (
+      <StyledSection
+        id={id}
+        className={className}
+        style={style}
+        $theme={theme}
+        $layout={`image ${layout}`}
+        $background={!!background}
+        $hasCta={!!cta}
+      >
+        <StyledMain>
+          {title && <StyledTitle>{title}</StyledTitle>}
+          <ImageContainer>
+            <Image image={image.image.childImageSharp.gatsbyImageData} alt={image.alt} />
+          </ImageContainer>
+
+          {description && <StyledDescription>{description}</StyledDescription>}
+
+          {children}
+
+          {cta && <StyledButton to={cta.to}>{cta.caption}</StyledButton>}
+        </StyledMain>
+      </StyledSection>
+    );
+  }
+
   return (
     <StyledSection
       id={id}
@@ -255,17 +354,11 @@ const Section = ({
         />
       }
 
-      {image &&
-        <ImageContainer>
-          <Image image={image.image.childImageSharp.gatsbyImageData} alt={image.alt} />
-        </ImageContainer>
-      }
-
       <StyledMain>
         {title && <StyledTitle>{title}</StyledTitle>}
         {description && <StyledDescription>{description}</StyledDescription>}
         {cards &&
-          <CardsContainer>
+          <CardsContainer $layout={cardsLayout}>
             {cards.map((card, index) => { return (
               <Card
                 key={`card_${index}`}
@@ -282,9 +375,9 @@ const Section = ({
         {children}
 
         {cta &&
-          <Button to={cta.to}>
+          <StyledButton to={cta.to}>
             {cta.caption}
-          </Button>
+          </StyledButton>
         }
       </StyledMain>
     </StyledSection>
