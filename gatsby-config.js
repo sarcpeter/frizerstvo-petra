@@ -1,6 +1,5 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
+require('dotenv').config({ path: '.env' });
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
@@ -16,5 +15,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: process.env.GATSBY_PREVIEW_STORYBLOK,
+        version: 'draft',
+        localAssets: true
+      }
+    }
   ],
 }
