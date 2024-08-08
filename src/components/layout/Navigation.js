@@ -151,9 +151,13 @@ const MobileSection = styled.div`
 `;
 
 const Navigation = (props) => {
-  const locationUrl = new URL((isBrowser() ? window.location.href : ''));
-  const subpage = locationUrl.pathname.slice(1, -1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  let subpage = '';
+
+  if (isBrowser()) {
+    const locationUrl = new URL(window.location.href);
+    subpage = locationUrl.pathname.slice(1, -1);
+  }
 
   const toggleMobileMenu = (event) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
