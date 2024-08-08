@@ -3,10 +3,11 @@ import styled, {css} from 'styled-components';
 
 import {GatsbyImage as Image} from 'gatsby-plugin-image';
 
-import BackgroundImage from './BackgroundImage';
-import Button from '../action/Button';
-import Gallery from './Gallery';
-import Card from './Card';
+import BackgroundImage from '../../content/BackgroundImage';
+import Button from '../../action/Button';
+import Gallery from '../../content/Gallery';
+import Card from '../../content/Card';
+import {storyblokEditable} from 'gatsby-source-storyblok';
 
 /*********************************************/
 /*              Base Components              */
@@ -273,25 +274,19 @@ const CardsContainer = styled.div`
 `;
 
 /*********************************************/
-/*                  Section                  */
+/*                  SectionBase                  */
 /*********************************************/
 
-const Section = ({
-  id,
-  className,
-  style,
-  title,
-  description,
-  cta,
-  image,
-  background,
-  layout,
-  theme,
-  cards,
-  cardsLayout,
-  gallery,
-  children
-}) => {
+const SectionBase = ({ id, blok, children }) => {
+  return (
+    <StyledSection
+      id={id}
+      {...storyblokEditable(blok)}
+    >
+      {children}
+    </StyledSection>
+  )
+  /*
   if (gallery) {
     return (
       <StyledSection
@@ -382,6 +377,8 @@ const Section = ({
       </StyledMain>
     </StyledSection>
   );
+
+   */
 }
 
-export default Section;
+export default SectionBase;
