@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {apiPlugin, storyblokInit, StoryblokComponent} from 'gatsby-source-storyblok';
 
 import Layout from '../components/layout/Layout';
+import TextAndImage from '../components/storyblok/section/textAndImage';
 import {isStoryblok} from '../utils/Storyblok';
 
 const Page = ({ pageContext }) => {
@@ -33,7 +34,7 @@ const Page = ({ pageContext }) => {
     accessToken: process.env.GATSBY_PREVIEW_STORYBLOK,
     use: [apiPlugin],
     components: {
-
+      'section-textAndImage': TextAndImage
     }
   });
 
