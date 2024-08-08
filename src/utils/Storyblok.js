@@ -1,5 +1,7 @@
+const {isBrowser} = require('./Utils');
+
 function isStoryblok() {
-  return (window && window.location.search.includes('_storyblok'));
+  return (isBrowser() && window.location.search.includes('_storyblok'));
 }
 
 function parseStoryblokData(data) {

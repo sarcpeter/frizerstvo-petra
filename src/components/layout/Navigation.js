@@ -6,6 +6,7 @@ import Link from '../action/Link';
 import Button from '../action/Button';
 
 import logo from '../../images/brand/logo_horizontal.png';
+import {isBrowser} from '../../utils/Utils';
 
 const NavContainer = styled.nav`
   --box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
@@ -150,7 +151,7 @@ const MobileSection = styled.div`
 `;
 
 const Navigation = (props) => {
-  const locationUrl = new URL((window ? window.location.href : ''));
+  const locationUrl = new URL((isBrowser() ? window.location.href : ''));
   const subpage = locationUrl.pathname.slice(1, -1);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

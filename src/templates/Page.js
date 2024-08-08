@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {apiPlugin, storyblokInit, StoryblokComponent} from 'gatsby-source-storyblok';
 
 import Layout from '../components/layout/Layout';
+import {isStoryblok} from '../utils/Storyblok';
 
 const Page = ({ pageContext }) => {
   const blok = pageContext.node;
@@ -9,7 +10,7 @@ const Page = ({ pageContext }) => {
   function loadStoryblokBridge() {
     const {StoryblokBridge, location} = window;
     const storyblokInstance = new StoryblokBridge();
-    storyblokInstance.on(['publish', 'chnage'], () => location.reload());
+    storyblokInstance.on(['publish', 'change'], () => location.reload());
   }
 
   function loadBridgeScript() {
@@ -37,7 +38,7 @@ const Page = ({ pageContext }) => {
   });
 
   useEffect(() => {
-    if (window.location.search.includes('_storyblok')) {
+    if (isStoryblok()) {
       loadBridgeScript();
     }
     // ! Intentionally ignoring react-hooks exhaustive-deps warning !
